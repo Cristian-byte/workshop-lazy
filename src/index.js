@@ -3,6 +3,8 @@
  * When you're ready to start on your site, clear the file. Happy hacking!
  **/
 
+import { registerImage } from "./lazy"
+
 //Crear imagen  
 //Agregar a #imagen
 
@@ -17,7 +19,7 @@ const createImageNode = () => {
 
     const imagen = document.createElement("img")
     imagen.className = "mx-auto";
-    imagen.width = "300";
+    imagen.width = "320";
     imagen.src = `https://randomfox.ca/images/${random()}.jpg`;
 
     container.appendChild(imagen);
@@ -28,12 +30,12 @@ const createImageNode = () => {
 const nuevaImagen = createImageNode();
 const mountNode = document.getElementById("images");
 
-const addButton = document.querySelector("button")
+const addButton = document.querySelector("button");
 
-//
 const addImage = () => {
     const newImage = createImageNode();
-    mountNode.appendChild(nuevaImagen);
+    mountNode.append(newImage);
+    registerImage(newImage);
 };
 
 addButton.addEventListener("click", addImage);
